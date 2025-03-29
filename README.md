@@ -38,6 +38,20 @@ Above are sample chest X-ray images from the training dataset:
 
 These images highlight the visual features used by the model to learn pathology patterns.
 
+## 📊 Class Distribution
+
+<p align="center">
+  <img src="assets/class_distribution.png" alt="Class Distribution Across Splits" width="95%">
+</p>
+
+This bar chart illustrates the number of X-ray images per class (NORMAL vs. PNEUMONIA) across different dataset splits:
+
+- **Training Set** shows moderate class imbalance (more pneumonia cases).
+- **Validation Set** is balanced.
+- **Test Set** also has more pneumonia cases.
+
+Understanding class distribution is crucial for handling bias and ensuring balanced evaluation.
+
 
 ## 🧠 Model Architecture
 
