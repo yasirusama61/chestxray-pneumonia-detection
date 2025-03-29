@@ -26,6 +26,19 @@ The dataset is structured into `train`, `val`, and `test` folders:
 
 ---
 
+## 🖼️ Sample Images
+
+<p align="center">
+  <img src="assets/sample_train_grid.png" alt="Sample TRAIN Images" width="90%">
+</p>
+
+Above are sample chest X-ray images from the training dataset:
+- The **top row** shows healthy (Normal) lungs.
+- The **bottom row** shows lungs diagnosed with **Pneumonia**.
+
+These images highlight the visual features used by the model to learn pathology patterns.
+
+
 ## 🧠 Model Architecture
 
 A simple **CNN** with:
