@@ -99,5 +99,32 @@ The predictions match the ground truth, showing the model's ability to distingui
 
 ---
 
+## 📈 Model Confidence Distribution
+
+This histogram shows the predicted probability of **Pneumonia** across test images. The model demonstrates strong confidence, correctly separating **NORMAL** and **PNEUMONIA** cases.
+
+<p align="center">
+  <img src="assets/confidence_histogram.png" alt="Model Confidence Histogram" width="500"/>
+</p>
+
+---
+
+## 🩺 Sample Prediction on Chest X-ray
+
+Below is a real test image with the model’s predicted class and confidence score. The model confidently identifies pneumonia with **100% certainty**:
+
+<p align="center">
+  <img src="assets/sample_prediction.png" alt="Sample Pneumonia Prediction" width="300"/>
+</p>
+
+---
+
+## ✅ How to Reproduce
+
+You can visualize model predictions and plot confidence distributions using:
+
+```python
+visualize_prediction(img_path, model)
+plot_prediction_distribution(test_dir, model)
 
 
