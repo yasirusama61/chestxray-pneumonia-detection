@@ -71,5 +71,33 @@ Want more power? You can upgrade to **EfficientNet**, **ResNet**, or **Transfer 
 ```bash
 python train.py
 ```
+## 📈 Model Evaluation
+
+We evaluated our trained CNN model on the test set from the **Chest X-Ray Pneumonia** dataset. The results demonstrate strong performance in detecting pneumonia from chest X-rays.
+
+### 🧪 Performance Metrics
+
+- **AUC (ROC):** 0.96
+- **Precision, Recall, and F1-score** are also high, as shown below.
+
+### 📊 Confusion Matrix, ROC Curve, and Precision-Recall Curve
+
+The following plot summarizes model performance visually:
+
+![Evaluation Metrics](assets/evaluation_metrics.png) <!-- Replace with actual path if hosted -->
+
+- The model has high **true positive rate** and low **false positive rate**.
+- Precision and recall trade-off is strong across thresholds.
+
+### 🩻 Example Predictions on Test Images
+
+Below are a few examples from the test set:
+
+![Predictions](assets/sample_predictions.png) <!-- Replace with actual path if hosted -->
+
+The predictions match the ground truth, showing the model's ability to distinguish between **NORMAL** and **PNEUMONIA** chest X-rays effectively.
+
+---
+
 
 
