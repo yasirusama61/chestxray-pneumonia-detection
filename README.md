@@ -69,7 +69,7 @@ Want more power? You can upgrade to **EfficientNet**, **ResNet**, or **Transfer 
 ## 🚀 Training
 
 ```bash
-python train.py
+python train_cnn.py
 ```
 ## 📈 Model Evaluation
 
