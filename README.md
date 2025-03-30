@@ -99,32 +99,51 @@ The predictions match the ground truth, showing the model's ability to distingui
 
 ---
 
-## 📈 Model Confidence Distribution
+## 📈 Model Comparison: Custom CNN vs DenseNet121 (Transfer Learning)
 
-This histogram shows the predicted probability of **Pneumonia** across test images. The model demonstrates strong confidence, correctly separating **NORMAL** and **PNEUMONIA** cases.
+We trained and evaluated two models on the Chest X-ray Pneumonia dataset:
 
-<p align="center">
-  <img src="assets/confidence_histogram.png" alt="Model Confidence Histogram" width="500"/>
-</p>
-
----
-
-## 🩺 Sample Prediction on Chest X-ray
-
-Below is a real test image with the model’s predicted class and confidence score. The model confidently identifies pneumonia with **100% certainty**:
-
-<p align="center">
-  <img src="assets/sample_prediction.png" alt="Sample Pneumonia Prediction" width="300"/>
-</p>
+- ✅ A custom CNN trained from scratch  
+- ✅ A transfer learning model using **DenseNet121** pretrained on ImageNet
 
 ---
 
-## ✅ How to Reproduce
+### 🔬 Evaluation Metrics
 
-You can visualize model predictions and plot confidence distributions using:
+| Metric              | Custom CNN       | DenseNet121 (Transfer Learning) |
+|---------------------|------------------|---------------------------------|
+| **Test Accuracy**   | ~96%             | **87%**                         |
+| **ROC AUC**         | 0.9600           | **0.9481**                      |
+| **F1-score (Normal)** | 0.85           | **0.81**                        |
+| **F1-score (Pneumonia)** | 0.92       | **0.90**                        |
+| **Recall (Pneumonia)**  | 0.96        | **0.94**                        |
+| **Model Size**      | Small            | Larger                          |
+| **Grad-CAM Support**| ✅ Enabled       | ✅ Planned                      |
 
-```python
-visualize_prediction(img_path, model)
-plot_prediction_distribution(test_dir, model)
+---
 
+### 📊 DenseNet121 – Evaluation Results
 
+![DenseNet121 Evaluation](assets/densenet_eval.png)
+
+![Classification Report](assets/densenet_classification_report.png)
+
+- **Confusion Matrix** and ROC curve show reliable classification performance.
+- **Classification Report** shows strong recall for PNEUMONIA class (0.94), with slightly lower recall on NORMAL class (0.75).
+- F1-score balances out at **0.90 (Pneumonia)** and **0.81 (Normal)**.
+
+---
+
+### 🧠 Insight
+
+Despite being a powerful pretrained architecture, DenseNet121 slightly underperformed the custom CNN on this dataset. This may be due to:
+- The relatively small dataset size
+- The model being frozen during training (not fine-tuned)
+
+---
+
+### 🛠️ Next Steps
+
+- ✅ Grad-CAM visualization for DenseNet121
+- 🔁 Fine-tune top layers of DenseNet for better generalization
+- 📦 Package the best model into a web demo or API
