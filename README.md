@@ -147,3 +147,14 @@ Despite being a powerful pretrained architecture, DenseNet121 slightly underperf
 - ✅ Grad-CAM visualization for DenseNet121
 - 🔁 Fine-tune top layers of DenseNet for better generalization
 - 📦 Package the best model into a web demo or API
+
+### 🎯 Confidence Threshold Analysis
+
+To better understand the model's behavior across different decision thresholds, we plotted **Precision and Recall vs Confidence Threshold**.
+
+This helps identify optimal thresholds based on the application's needs — for example, prioritizing **recall** in a medical setting to minimize false negatives.
+
+![Confidence Curve](assets/densenet_confidence_curve.png)
+
+- As expected, **precision increases** and **recall decreases** as confidence threshold rises.
+- The default threshold of 0.5 (dashed line) represents a good balance, but the curve allows threshold tuning for specific use cases.
