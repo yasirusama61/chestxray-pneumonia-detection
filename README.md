@@ -216,3 +216,18 @@ We calculated **Youden’s Index** across a range of thresholds to identify the 
 - This threshold yielded the highest **Youden’s J (≈ 0.79)**, meaning it provides the most balanced classification
 - This threshold was then used for post-optimization evaluation (see results above)
 
+### 🩻 Grad-CAM Visualization (DenseNet121)
+
+We used Grad-CAM to visualize the model’s attention regions when classifying chest X-ray images. The heatmaps below show which areas the DenseNet121 model focuses on while making predictions.
+
+![Grad-CAM DenseNet](assets/gradcam_densenet.png)
+
+- 🔵 **Blue/Green** = Lower activation
+- 🔴 **Red** = High attention regions
+- 🔍 This helps verify that the model is looking at medically relevant lung regions rather than random artifacts.
+
+Example observations:
+- Correct **PNEUMONIA** predictions show focused attention in the lower lungs or around the opacity regions.
+- Misclassifications (e.g., false negatives) sometimes show more diffused attention, suggesting uncertain decision-making.
+
+This adds a layer of interpretability to model predictions and increases trust in its outputs.
