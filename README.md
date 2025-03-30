@@ -158,3 +158,52 @@ This helps identify optimal thresholds based on the application's needs — for 
 
 - As expected, **precision increases** and **recall decreases** as confidence threshold rises.
 - The default threshold of 0.5 (dashed line) represents a good balance, but the curve allows threshold tuning for specific use cases.
+
+### 🎯 Threshold Optimization with Youden's Index
+
+To improve decision-making beyond the default threshold (0.5), we applied **Youden's J statistic** to determine the optimal classification threshold.
+
+- 📌 **Optimal Threshold (Youden's Index):** `0.7653`
+- This threshold balances **recall and specificity** and is suitable for medical screening where minimizing false positives is important.
+
+---
+
+#### 📋 Classification Report @ Threshold = 0.7653
+
+| Class      | Precision | Recall | F1-score | Support |
+|------------|-----------|--------|----------|---------|
+| NORMAL     | 0.82      | 0.91   | 0.86     | 234     |
+| PNEUMONIA  | 0.94      | 0.88   | 0.91     | 390     |
+| **Accuracy**     |       |        | **0.89** | 624     |
+
+- Macro F1: **0.89**  
+- Weighted F1: **0.89**
+
+---
+
+![Youden Confusion Matrix](assets/youden_confusion_matrix.png)
+
+Compared to the default threshold:
+- ✅ **Precision increased**, especially for pneumonia
+- ✅ **Balanced trade-off** between sensitivity and specificity
+- 🚀 Improved overall model reliability for deployment scenarios
+
+### 🔄 Before vs After Applying Youden’s Threshold (0.7653)
+
+We compared the model's evaluation metrics using the **default threshold (0.5)** and the **optimized threshold (0.7653)** obtained via **Youden’s Index**.
+
+| Metric               | Threshold = 0.5   | Threshold = 0.7653 |
+|----------------------|------------------|---------------------|
+| **Accuracy**         | 0.87             | **0.89**            |
+| **Precision (Normal)** | 0.88           | **0.82**            |
+| **Recall (Normal)**    | 0.75           | **0.91**            |
+| **Precision (Pneumonia)** | 0.86       | **0.94**            |
+| **Recall (Pneumonia)**    | 0.94       | **0.88**            |
+| **F1-Score (Normal)**    | 0.81         | **0.86**            |
+| **F1-Score (Pneumonia)** | 0.90         | **0.91**            |
+| **Macro F1**         | 0.85             | **0.89**            |
+
+✅ **Youden's threshold** improved **overall accuracy and F1-score**, especially by increasing the **recall of the NORMAL class** (reducing false positives for pneumonia).  
+It's a strong alternative to the default threshold when aiming for **more reliable classification** in clinical or real-world applications.
+
+
