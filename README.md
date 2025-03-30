@@ -230,3 +230,20 @@ This helps us verify whether the model is focusing on medically relevant regions
 - ✅ The model shows consistent and localized attention, increasing trust in its predictions.
 
 This visualization supports the model's interpretability and is helpful for clinical validation or decision support systems.
+
+### ⚠️ Misclassification Analysis (Grad-CAM)
+
+We also investigated misclassified examples using Grad-CAM to understand where the model's attention was focused when it made incorrect predictions.
+
+Below is an example where the model **incorrectly predicted "PNEUMONIA"** with high confidence (0.97), while the ground truth label was **"NORMAL"**:
+
+![Misclassified Grad-CAM](assets/misclassified_normal_pred_pneumonia.png)
+
+**Observation:**
+- The model concentrated on a region in the **right mid-to-lower lung**, where it might have interpreted tissue texture or slight opacity as abnormal.
+- This could be:
+  - 🔬 A **subtle radiological feature** that resembles pneumonia (but isn’t)
+  - ⚠️ A **false positive due to over-sensitivity**, especially after optimizing for high recall
+  - 🧠 Or a **labeling inconsistency** — it might not be 100% "normal" (annotation noise is common in real X-ray datasets)
+
+This highlights the importance of Grad-CAM in **interpreting model behavior** and identifying **clinical edge cases**.
