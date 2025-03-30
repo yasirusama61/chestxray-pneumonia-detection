@@ -206,4 +206,13 @@ We compared the model's evaluation metrics using the **default threshold (0.5)**
 ✅ **Youden's threshold** improved **overall accuracy and F1-score**, especially by increasing the **recall of the NORMAL class** (reducing false positives for pneumonia).  
 It's a strong alternative to the default threshold when aiming for **more reliable classification** in clinical or real-world applications.
 
+### 🧮 Youden’s Index Curve
+
+We calculated **Youden’s Index** across a range of thresholds to identify the point that best balances sensitivity (recall) and specificity.
+
+![Youden Curve](assets/youden_index_curve.png)
+
+- The peak occurs at **threshold = 0.7653**
+- This threshold yielded the highest **Youden’s J (≈ 0.79)**, meaning it provides the most balanced classification
+- This threshold was then used for post-optimization evaluation (see results above)
 
