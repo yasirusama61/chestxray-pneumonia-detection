@@ -218,16 +218,15 @@ We calculated **Youden’s Index** across a range of thresholds to identify the 
 
 ### 🩻 Grad-CAM Visualization (DenseNet121)
 
-We used Grad-CAM to visualize the model’s attention regions when classifying chest X-ray images. The heatmaps below show which areas the DenseNet121 model focuses on while making predictions.
+We used Grad-CAM to visualize the model’s attention while predicting chest X-rays using the **DenseNet121** model.
+
+This helps us verify whether the model is focusing on medically relevant regions (lungs, opacities) when making decisions.
 
 ![Grad-CAM DenseNet](assets/gradcam_densenet.png)
 
-- 🔵 **Blue/Green** = Lower activation
-- 🔴 **Red** = High attention regions
-- 🔍 This helps verify that the model is looking at medically relevant lung regions rather than random artifacts.
+**Observations:**
+- ✅ **Correct NORMAL predictions** focus on clear lung regions, with lower confidence heat.
+- ✅ **Correct PNEUMONIA predictions** show strong activation around infiltrates or opacities, often in lower lungs.
+- ✅ The model shows consistent and localized attention, increasing trust in its predictions.
 
-Example observations:
-- Correct **PNEUMONIA** predictions show focused attention in the lower lungs or around the opacity regions.
-- Misclassifications (e.g., false negatives) sometimes show more diffused attention, suggesting uncertain decision-making.
-
-This adds a layer of interpretability to model predictions and increases trust in its outputs.
+This visualization supports the model's interpretability and is helpful for clinical validation or decision support systems.
