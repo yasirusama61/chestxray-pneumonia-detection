@@ -247,3 +247,22 @@ Below is an example where the model **incorrectly predicted "PNEUMONIA"** with h
   - 🧠 Or a **labeling inconsistency** — it might not be 100% "normal" (annotation noise is common in real X-ray datasets)
 
 This highlights the importance of Grad-CAM in **interpreting model behavior** and identifying **clinical edge cases**.
+
+### 🔍 Misclassified Case Study: False Positives (NORMAL → PNEUMONIA)
+
+We investigated 10 misclassified test cases using Grad-CAM where the model predicted **PNEUMONIA** on **NORMAL** X-rays with high confidence (>0.75).
+
+![Misclassified Grad-CAMs](assets/misclassified_fp_panel.png)
+
+**Findings:**
+- Most activations are in the **lower lobes** or **perihilar zones**, consistent with common pneumonia locations
+- Some heatmaps highlight **vascular structures or soft-tissue overlaps**, which may have confused the model
+- While labeled "NORMAL," a few cases might have **subtle findings** or **labeling uncertainty**
+
+This analysis helps us understand that:
+- The model is making **clinically explainable errors**
+- Further improvement can come from:
+  - Label verification
+  - Hard negative mining
+  - Improved augmentations to reduce false positives
+
