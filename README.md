@@ -248,6 +248,7 @@ Below is an example where the model **incorrectly predicted "PNEUMONIA"** with h
 
 This highlights the importance of Grad-CAM in **interpreting model behavior** and identifying **clinical edge cases**.
 
+
 ### 🔍 Misclassified Case Study: False Positives (NORMAL → PNEUMONIA)
 
 We investigated 10 misclassified test cases using Grad-CAM where the model predicted **PNEUMONIA** on **NORMAL** X-rays with high confidence (>0.75).
@@ -283,4 +284,46 @@ These are especially important in medical applications, as missed diagnoses can 
   - Possibly **fine-tuning on hard examples**
   - Better handling of **label noise** or visually ambiguous cases
 
+### 🩺 Expert Review: False Positive and False Negative Analysis
+
+To ensure clinical validity, we reviewed misclassified samples using Grad-CAM overlays to interpret model behavior, particularly focusing on false positives (FP) and false negatives (FN).
+
+---
+
+#### 🔍 False Positives (Predicted: PNEUMONIA | Ground Truth: NORMAL)
+
+![False Positives Panel](assets/misclassified_fp_panel.png)
+
+**Clinical Interpretation:**
+
+- The model focused on the **mid-to-lower lung zones** in most FP cases — common sites for pneumonia, suggesting the model is aligned with radiological intuition.
+- Several cases showed **vascular markings or rib overlaps** that the model may have mistaken for infiltrates.
+- In at least one case, **faint soft-tissue opacity** could potentially represent a real abnormality not labeled — raising the possibility of **labeling noise** in the dataset.
+- These findings are **acceptable false alarms** in a triage setting where sensitivity is prioritized.
+
+---
+
+#### 🚨 False Negatives (Predicted: NORMAL | Ground Truth: PNEUMONIA)
+
+![False Negatives Panel](assets/misclassified_fn_panel.png)
+
+**Clinical Interpretation:**
+
+- Some missed cases had **diffuse or very subtle opacities** — likely to be overlooked without clinical correlation or lateral views.
+- Grad-CAM heatmaps showed **low activation in lung zones**, indicating that the model may not have perceived enough structural irregularity to trigger a pneumonia classification.
+- These false negatives reflect limitations in capturing **early or atypical presentations**, suggesting a need for:
+  - Further training on mild pneumonia cases
+  - Augmentation of borderline samples
+  - Or integration with clinical metadata for better context
+
+---
+
+### 💬 Summary
+
+The Grad-CAM analysis provides confidence that the model is:
+- Focusing on **medically relevant lung areas**
+- Making **interpretable errors** consistent with clinical ambiguity
+- Likely to benefit from **post-processing** (e.g., soft voting or threshold tuning) to reduce false negatives in real-world deployment
+
+Overall, the model shows behavior **aligned with radiological patterns**, and the interpretability pipeline strengthens its potential for clinical application.
 
