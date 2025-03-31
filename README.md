@@ -266,3 +266,21 @@ This analysis helps us understand that:
   - Hard negative mining
   - Improved augmentations to reduce false positives
 
+### 🚨 False Negative Analysis (Missed Pneumonia Cases)
+
+We also examined cases where the model **missed pneumonia**, predicting **"NORMAL"** with confidence below the Youden threshold of 0.7653.
+
+These are especially important in medical applications, as missed diagnoses can be critical.
+
+![False Negative Grad-CAMs](assets/misclassified_fn_panel.png)
+
+**Observations:**
+- Model attention was often **diffused** or focused on **non-relevant areas**
+- Some cases showed **no strong activation**, indicating lack of confidence
+- A few **borderline cases** had confidence just under the threshold — might benefit from soft-voting or second review
+- These highlight the need for:
+  - More **sensitive detection of early-stage pneumonia**
+  - Possibly **fine-tuning on hard examples**
+  - Better handling of **label noise** or visually ambiguous cases
+
+
