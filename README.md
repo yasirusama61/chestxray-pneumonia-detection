@@ -248,42 +248,6 @@ Below is an example where the model **incorrectly predicted "PNEUMONIA"** with h
 
 This highlights the importance of Grad-CAM in **interpreting model behavior** and identifying **clinical edge cases**.
 
-
-### 🔍 Misclassified Case Study: False Positives (NORMAL → PNEUMONIA)
-
-We investigated 10 misclassified test cases using Grad-CAM where the model predicted **PNEUMONIA** on **NORMAL** X-rays with high confidence (>0.75).
-
-![Misclassified Grad-CAMs](assets/misclassified_fp_panel.png)
-
-**Findings:**
-- Most activations are in the **lower lobes** or **perihilar zones**, consistent with common pneumonia locations
-- Some heatmaps highlight **vascular structures or soft-tissue overlaps**, which may have confused the model
-- While labeled "NORMAL," a few cases might have **subtle findings** or **labeling uncertainty**
-
-This analysis helps us understand that:
-- The model is making **clinically explainable errors**
-- Further improvement can come from:
-  - Label verification
-  - Hard negative mining
-  - Improved augmentations to reduce false positives
-
-### 🚨 False Negative Analysis (Missed Pneumonia Cases)
-
-We also examined cases where the model **missed pneumonia**, predicting **"NORMAL"** with confidence below the Youden threshold of 0.7653.
-
-These are especially important in medical applications, as missed diagnoses can be critical.
-
-![False Negative Grad-CAMs](assets/misclassified_fn_panel.png)
-
-**Observations:**
-- Model attention was often **diffused** or focused on **non-relevant areas**
-- Some cases showed **no strong activation**, indicating lack of confidence
-- A few **borderline cases** had confidence just under the threshold — might benefit from soft-voting or second review
-- These highlight the need for:
-  - More **sensitive detection of early-stage pneumonia**
-  - Possibly **fine-tuning on hard examples**
-  - Better handling of **label noise** or visually ambiguous cases
-
 ### 🩺 Expert Review: False Positive and False Negative Analysis
 
 To ensure clinical validity, we reviewed misclassified samples using Grad-CAM overlays to interpret model behavior, particularly focusing on false positives (FP) and false negatives (FN).
