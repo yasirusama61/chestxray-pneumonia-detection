@@ -291,3 +291,57 @@ The Grad-CAM analysis provides confidence that the model is:
 
 Overall, the model shows behavior **aligned with radiological patterns**, and the interpretability pipeline strengthens its potential for clinical application.
 
+## 📊 Model Performance Comparison
+
+We evaluated three models for binary classification of chest X-rays (NORMAL vs PNEUMONIA):
+
+| Metric               | 🔹 Basic CNN | 🔸 DenseNet121 | 🚀 CNN + Transformer |
+|----------------------|--------------|----------------|-----------------------|
+| **Test Accuracy**     | 0.87         | 0.89           | 0.88                  |
+| **AUC Score**         | 0.9600       | 0.9481         | 0.9564                |
+| **Pneumonia Recall**  | 0.94         | 0.88           | **0.97**              |
+| **Normal Recall**     | 0.75         | **0.91**       | 0.74                  |
+| **Pneumonia Precision** | 0.86       | 0.94           | 0.86                  |
+| **Normal Precision**  | 0.88         | 0.82           | **0.93**              |
+| **False Negatives**   | 24           | 45             | **13**                |
+| **False Positives**   | 59           | **22**         | 62                    |
+
+---
+
+### 🧠 Interpretation
+
+- ✅ **CNN + Transformer** model achieved **highest AUC (0.9564)** and **best recall for pneumonia (0.97)**, making it ideal for **early-stage triage or screening** tasks.
+- 🔸 **DenseNet121** provided the **most balanced performance**, with strong precision and recall for both classes and the **lowest false positive rate**.
+- 🔹 The **basic CNN** performed surprisingly well for its simplicity, with strong pneumonia recall (0.94) and overall AUC of 0.96, but suffered more false positives.
+
+---
+
+### 🔍 Visual Evaluation (CNN + Transformer)
+
+**ROC Curve:**
+
+![ROC Curve - CNN+Transformer](assets/roc_cnn_transformer.png)
+
+**Confusion Matrix:**
+
+![Confusion Matrix - CNN+Transformer](assets/cm_cnn_transformer.png)
+
+---
+
+### 🩺 Recommendation
+
+| Use Case                         | Suggested Model        |
+|----------------------------------|------------------------|
+| **Clinical Triage / Early Warning** | 🚀 CNN + Transformer |
+| **Balanced Diagnosis Model**     | 🔸 DenseNet121         |
+| **Resource-Constrained Deployment** | 🔹 Basic CNN         |
+
+---
+
+### 📌 Notes
+
+- All models were trained and tested on the **Chest X-ray (Pneumonia)** dataset.
+- Each was evaluated using accuracy, precision, recall, AUC, and confusion matrix.
+- Grad-CAM visualizations were used to interpret model focus for both correct and misclassified cases.
+- ROC & confusion plots were saved under `/assets` for comparison.
+
