@@ -291,6 +291,44 @@ The Grad-CAM analysis provides confidence that the model is:
 
 Overall, the model shows behavior **aligned with radiological patterns**, and the interpretability pipeline strengthens its potential for clinical application.
 
+## 🧠 Model Architecture: CNN + Transformer Hybrid
+
+We implemented a **hybrid deep learning model** that combines the strengths of convolutional layers (for local spatial features) and Transformer attention (for global context reasoning).
+
+---
+
+### 🔗 Architecture Flow (Sequential Hybrid)
+
+The model structure is **sequential**, where:
+
+1. **CNN Backbone** extracts spatial features:
+   - 3 convolutional layers with increasing depth (32 → 64 → 128)
+   - MaxPooling layers reduce spatial dimensions
+
+2. **Transformer Encoder Block** processes reshaped CNN feature maps:
+   - Reshape → sequence of tokens
+   - Multi-Head Self Attention + LayerNorm
+   - Final embedding via Dense layer
+
+3. **Classification Head**:
+   - GlobalAveragePooling + Dense layers
+   - Binary sigmoid output for pneumonia prediction
+
+📌 This design allows the Transformer to operate on high-level CNN features, enabling context-aware decision-making while preserving spatial inductive biases.
+
+---
+
+### 📊 Architecture Diagram
+
+![CNN + Transformer Hybrid](assets/cnn_transformer_architecture.png)
+
+---
+
+> ⚠️ Note: This is a **sequential hybrid**, not a parallel architecture. The Transformer block processes CNN-derived features rather than learning from raw input in parallel.
+
+---
+
+
 ## 📊 Model Performance Comparison
 
 We evaluated three models for binary classification of chest X-rays (NORMAL vs PNEUMONIA):
