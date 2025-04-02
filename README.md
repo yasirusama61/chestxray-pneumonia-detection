@@ -383,6 +383,26 @@ We evaluated three models for binary classification of chest X-rays (NORMAL vs P
 - Grad-CAM visualizations were used to interpret model focus for both correct and misclassified cases.
 - ROC & confusion plots were saved under `/assets` for comparison.
 
+### 🔄 Retraining Results (Resume from Checkpoint)
+
+After continuing training the CNN + Transformer model from the saved checkpoint (`cnn_transformer_best.keras`) for 100 more epochs, we observed improved generalization:
+
+- ✅ **AUC (NORMAL)** increased from 0.9482 → **0.9550**
+- ✅ **AUC (PNEUMONIA)** increased from 0.9482 → **0.9550**
+- ✅ **Normal Recall** improved from 0.74 → **0.79**
+- ✅ **Pneumonia Precision** improved from 0.86 → **0.89**
+- 🔁 Slight trade-off in Pneumonia Recall (0.97 → 0.95), but overall better balance
+
+This shows that **resuming from a strong checkpoint** and training further can help:
+- Reduce underfitting in early stages
+- Sharpen model attention (confirmed by Grad-CAM++)
+- Improve AUC and decision calibration
+
+🧪 We recommend fine-tuning in 2 stages:
+1. Train to baseline → Save best checkpoint
+2. Resume from best checkpoint → Boost generalization
+
+
 ## 🔬 Grad-CAM++ Visualizations (CNN + Transformer)
 
 To better understand what the CNN + Transformer model is focusing on during predictions, we applied **Grad-CAM++** on correctly classified test images.
