@@ -345,3 +345,46 @@ We evaluated three models for binary classification of chest X-rays (NORMAL vs P
 - Grad-CAM visualizations were used to interpret model focus for both correct and misclassified cases.
 - ROC & confusion plots were saved under `/assets` for comparison.
 
+## 🔬 Grad-CAM++ Visualizations (CNN + Transformer)
+
+To better understand what the CNN + Transformer model is focusing on during predictions, we applied **Grad-CAM++** on correctly classified test images.
+
+This helped us visualize **model attention across lung fields**, especially in high-confidence cases.
+
+---
+
+### ✅ Results: Examples
+
+![GradCAM++ CNN+Transformer](assets/gradcampp_cnn_transformer.png)
+
+| True Label | Predicted | Confidence | Observation |
+|------------|-----------|------------|-------------|
+| **NORMAL** | NORMAL    | 0.18       | Weak, scattered activation — no strong features detected |
+| **NORMAL** | NORMAL    | 0.44       | Slight attention near ribs/clavicle, not lung infiltrates |
+| **PNEUMONIA** | PNEUMONIA | 0.98     | Strong focus in lower/mid-lung — expected pneumonia zone |
+| **PNEUMONIA** | PNEUMONIA | 1.00     | Whole-lung saturated activation — strong evidence, but may indicate overconfidence in severe cases |
+
+---
+
+### 🩺 Clinical Insight
+
+- **NORMAL cases**: Weak or localized activation → suggests model does not falsely over-interpret normal structures.
+- **PNEUMONIA cases**: Strong focus on lower or central lung regions aligns well with radiological findings.
+- In very confident predictions (1.00), the activation sometimes spreads across the entire lung field — typical for severe infections but worth reviewing further.
+
+---
+
+### 🧠 Why Grad-CAM++?
+
+Grad-CAM++ improves upon Grad-CAM by:
+- Using **second-order gradients**
+- Producing **sharper, better localized heatmaps**
+- Revealing **fine-grained** decision cues, especially in medical imaging
+
+---
+
+### 🛠 Next Step
+
+We plan to:
+- Run Grad-CAM++ on **misclassified cases** (false positives & false negatives)
+- Compare with basic Grad-CAM and Score-CAM for further validation
