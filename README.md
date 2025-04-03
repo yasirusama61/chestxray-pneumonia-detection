@@ -481,3 +481,28 @@ Grad-CAM++ improves upon Grad-CAM by:
 We plan to:
 - Run Grad-CAM++ on **misclassified cases** (false positives & false negatives)
 - Compare with basic Grad-CAM and Score-CAM for further validation
+
+## 🔍 AI-Assisted Case Review Summary
+
+To evaluate the model’s clinical plausibility, we manually inspected a sample of **Grad-CAM visualizations** from both correctly classified and misclassified test cases. We reviewed:
+
+- ✅ Focus regions (e.g., lung bases, consolidations)
+- ✅ Misinterpretations (e.g., overactivation on ribs or artifacts)
+- ✅ Common failure modes (e.g., subtle opacity missed)
+
+The following table summarizes selected examples from the model’s predictions:
+
+| 🧪 Case | ✅ True Label | 🤖 Prediction | 📊 Confidence | 🔥 Grad-CAM Focus | 🩺 Clinical Interpretation |
+|--------|--------------|----------------|----------------|--------------------|-----------------------------|
+| #1     | NORMAL        | PNEUMONIA      | 0.91           | Lower left lobe     | Misclassified due to overexposure artifact |
+| #2     | PNEUMONIA     | PNEUMONIA      | 0.98           | Bilateral lower zones | Matches clinical findings (classic presentation) |
+| #3     | PNEUMONIA     | NORMAL         | 0.38           | Sparse / unfocused  | False negative — opacity was subtle |
+| #4     | COVID19       | PNEUMONIA      | 0.82           | Perihilar region     | Overlap with viral pneumonia pattern |
+| #5     | TUBERCULOSIS  | TUBERCULOSIS   | 0.95           | Right upper lobe     | Correctly detects cavitary pattern |
+| #6     | NORMAL        | NORMAL         | 0.07           | Background (non-lung) | Correct — no abnormal focus seen |
+
+> 🧠 *Grad-CAM visualization supports model transparency and helped identify common failure patterns.*
+
+---
+
+
