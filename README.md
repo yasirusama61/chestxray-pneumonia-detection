@@ -581,3 +581,33 @@ These heatmaps reveal **where the model focuses** when making a classification.
 | **Misclassifications** | Some off-lung attention, possibly due to artifacts or mild opacity | ⚠️ Worth Reviewing |
 
 > 📌 **Note**: All Grad-CAMs are from *unseen test data* and demonstrate model explainability across correct and incorrect predictions.
+
+---
+
+## 🧪 Robustness Evaluation under Noisy & Degraded Conditions
+
+To simulate real-world clinical environments, we tested the trained **Swin Transformer** model on a variety of augmented chest X-ray conditions:
+
+| Noise Type         | Accuracy (%) | Result       |
+|--------------------|---------------|--------------|
+| ✅ **Clean**         | 70.17%        | 🔵 Baseline   |
+| 🌫️ Gaussian Noise    | 67.44%        | 🟡 Slight drop |
+| 🌞 Overexposed       | **72.24%**    | 🟢 Robust      |
+| 🌚 Underexposed      | 66.41%        | 🟡 Decreased   |
+| 🌀 Blurred           | 58.88%        | 🔴 Sensitive   |
+| 🔻 Low-Resolution    | 59.01%        | 🔴 Sensitive   |
+
+<div align="center">
+  <img src="assets/noise_robustness_barplot.png" width="70%" alt="Model Accuracy under Noise Conditions">
+</div>
+
+### 🔍 Key Observations:
+- The model **maintains performance** under slight brightness or noise changes.
+- **Blur and resolution degradation** significantly reduce accuracy — likely due to loss of fine structural cues.
+- Suggests a need for:
+  - Image quality pre-checks during deployment.
+  - Training-time augmentations to improve generalization.
+
+> 💬 _This analysis adds an extra layer of trust and practicality, especially for **deployment in resource-variable hospital settings**._
+
+---
