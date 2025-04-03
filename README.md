@@ -505,4 +505,22 @@ The following table summarizes selected examples from the model’s predictions:
 
 ---
 
+## 🫁 Grad-CAM Visualization on Real Hospital Pneumonia Case
+
+To further verify the model’s clinical relevance, we applied Grad-CAM on real anonymized chest X-ray scans obtained from a hospital dataset (not publicly released). These images were not seen during training and represent real-world diagnostic conditions.
+
+The following panel illustrates a correctly predicted pneumonia case by our CNN + Transformer model:
+
+![Grad-CAM Hospital Pneumonia Case](assets/hospital/normal_real_gradcam.png)
+
+![Grad-CAM Hospital Pneumonia Case](assets/hospital/pneumonia_real_gradcam.png)
+
+**🩻 Up**: Normal case chest X-ray  
+**🔬 Below**: Overlay highlighting model focus in the lower lung lobes
+
+> 📌 *The model strongly activates in the posterior-lower lung region — a clinically relevant site for consolidation and pneumonia. The activation pattern is consistent with expert radiologic review.*
+
+---
+
+⚠️ Hospital data was used strictly for internal validation and remains confidential.
 
