@@ -526,3 +526,35 @@ To validate the model’s clinical applicability, we applied **Grad-CAM** to **r
 
 ⚠️ Hospital data was used strictly for internal validation and remains confidential.
 
+## 📈 Swin Transformer Results on 4-Class Dataset
+
+We evaluated the **Swin Transformer** on a diverse chest X-ray dataset containing **4 classes**:
+
+- 🟩 **COVID19**
+- 🟦 **NORMAL**
+- 🟥 **PNEUMONIA**
+- 🟨 **TUBERCULOSIS**
+
+### 🧠 ROC Curve
+
+![ROC Curve – Swin Transformer (4-Class)](assets/swin_roc_4class.png)
+
+> **AUC Scores:**
+> - **COVID19**: `1.00`
+> - **NORMAL**: `0.94`
+> - **PNEUMONIA**: `0.98`
+> - **TUBERCULOSIS**: `1.00`
+
+---
+
+### 📊 Confusion Matrix
+
+![Confusion Matrix – Swin Transformer (4-Class)](assets/swin_confusion_4class.png)
+
+> ✅ The model excels at **COVID19**, **PNEUMONIA**, and **TUBERCULOSIS**  
+> ⚠️ Some **NORMAL** cases are misclassified as **PNEUMONIA**
+
+---
+
+> 📌 *This experiment demonstrates the Swin Transformer’s strong ability to generalize across complex chest X-ray patterns including infectious diseases like COVID-19 and tuberculosis.*
+
