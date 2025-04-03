@@ -558,3 +558,26 @@ We evaluated the **Swin Transformer** on a diverse chest X-ray dataset containin
 
 > 📌 *This experiment demonstrates the Swin Transformer’s strong ability to generalize across complex chest X-ray patterns including infectious diseases like COVID-19 and tuberculosis.*
 
+## 🧠 Grad-CAM Visualizations – Swin Transformer (4-Class)
+
+To interpret the Swin Transformer’s decision-making, we visualized **Grad-CAM overlays** for predictions on the **COVID-19 + Pneumonia chest X-ray dataset**.
+
+These heatmaps reveal **where the model focuses** when making a classification.
+
+<p align="center">
+  <img src="assets/swin_gradcam_examples.png" alt="Swin Transformer Grad-CAM overlays" width="600">
+</p>
+
+---
+
+### 🔍 Clinical Observations
+
+| Class           | Model Focus Area                     | Verdict         |
+|------------------|---------------------------------------|------------------|
+| **Pneumonia**     | Lower lobes / patchy infiltrates      | ✅ Consistent     |
+| **COVID-19**      | Bilateral peripheral regions          | ✅ Expected       |
+| **Tuberculosis**  | Mid-upper lung fields                 | ✅ Realistic      |
+| **NORMAL**        | Mostly clear lung fields              | ✅ Clean focus    |
+| **Misclassifications** | Some off-lung attention, possibly due to artifacts or mild opacity | ⚠️ Worth Reviewing |
+
+> 📌 **Note**: All Grad-CAMs are from *unseen test data* and demonstrate model explainability across correct and incorrect predictions.
