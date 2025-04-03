@@ -511,9 +511,9 @@ To further verify the model’s clinical relevance, we applied Grad-CAM on real 
 
 The following panel illustrates a correctly predicted pneumonia case by our CNN + Transformer model:
 
-![Grad-CAM Hospital Pneumonia Case](assets/hospital/normal_real_gradcam.png)
+![Grad-CAM Hospital Pneumonia Case](assets/normal_real_gradcam.png)
 
-![Grad-CAM Hospital Pneumonia Case](assets/hospital/pneumonia_real_gradcam.png)
+![Grad-CAM Hospital Pneumonia Case](assets/pneumonia_real_gradcam.png)
 
 **🩻 Up**: Normal case chest X-ray  
 **🔬 Below**: Overlay highlighting model focus in the lower lung lobes
