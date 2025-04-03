@@ -1,17 +1,52 @@
-# 🫁 Pneumonia Chest X-Ray Classifier
+# 🫁 Pneumonia Chest X-Ray Classifier with Deep Learning
 
-This project implements a **Convolutional Neural Network (CNN)** to detect **pneumonia** from **chest X-ray images**. Built using TensorFlow/Keras and trained on the [Chest X-Ray Images (Pneumonia)](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia) dataset.
+[![Made with TensorFlow](https://img.shields.io/badge/Made%20with-TensorFlow-orange?style=flat&logo=tensorflow)](https://www.tensorflow.org/)
+[![Model: CNN + Transformer](https://img.shields.io/badge/Model-CNN%20+%20Transformer-blue?style=flat)]()
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Kaggle Dataset](https://img.shields.io/badge/Data-Kaggle-blue?logo=kaggle)](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)
+[![Last Updated](https://img.shields.io/badge/Last%20Updated-April%202025-lightgrey)]()
+
+> A clinically-inspired deep learning pipeline for automated pneumonia detection using chest radiographs — integrating CNNs, Transformer-based models, Grad-CAM explainability, and generalization analysis across datasets.
 
 ---
 
-## 📌 Overview
+## 🔬 Project Summary
 
-Pneumonia is a serious lung infection that can be diagnosed using radiographic imaging like chest X-rays. This project aims to classify X-ray scans into:
+This repository presents a full-scale deep learning solution for pneumonia classification using chest X-ray imaging. It combines:
 
-- ✅ **Normal**
-- ❌ **Pneumonia**
+- ✅ Baseline CNNs  
+- 🔍 Transfer learning (DenseNet121 a.k.a. CheXNet)  
+- 🚀 Transformer-integrated hybrid architectures  
+- 🧠 Attention and Grad-CAM visualizations  
+- 🧪 Generalization tests on external datasets  
 
-We use data augmentation, a clean CNN pipeline, and visualization techniques to build an interpretable and efficient model.
+The project is designed to be clinically applicable and interpretable, supporting further research in medical AI and radiographic analysis.
+
+---
+
+## 📂 Datasets Used
+
+We train and evaluate on two publicly available datasets:
+
+1. [Chest X-Ray Images (Pneumonia)](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)
+2. [Chest X-ray (COVID-19, Pneumonia & Tuberculosis)](https://www.kaggle.com/datasets/aysendegerli/chest-xray-pneumoniacovid19tuberculosis)
+
+---
+
+## 💡 Clinical Motivation
+
+> Pneumonia is a leading cause of morbidity worldwide, particularly in pediatric and elderly populations. Prompt and accurate detection via chest radiographs is critical — and automation can significantly aid in triage, especially in resource-limited settings.
+
+This project leverages modern vision architectures and interpretability tools to build a robust, transparent pneumonia detection system.
+
+---
+
+## 🧠 Goals
+
+- Develop high-performance models (CNN, DenseNet, CNN+Transformer, Swin)
+- Benchmark against medical-grade datasets
+- Visualize model attention and failure modes
+- Test generalization on unseen real-world data
 
 ---
 
