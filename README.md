@@ -612,6 +612,39 @@ To simulate real-world clinical environments, we tested the trained **Swin Trans
 
 ---
 
+## ⚠️ Class Imbalance Analysis
+
+Before applying Focal Loss, we analyzed the **distribution of each class** across the `train`, `val`, and `test` splits.
+
+This heatmap clearly reveals **severe imbalance**, especially in the training set:
+
+- 🟦 **Pneumonia dominates** (~61% of training samples)
+- 🟨 **COVID-19 and Tuberculosis** are underrepresented
+
+### 🔥 Class Distribution Heatmap
+
+<img src="assets/class_distribution_heatmap.png" width="600"/>
+
+- Darker = Higher proportion
+- This imbalance leads to **bias during learning**, where the model favors dominant classes.
+
+---
+
+## 🎯 Why Focal Loss?
+
+Given this skewed distribution, **standard CrossEntropy** was **not sufficient** to generalize well.
+
+✅ We adopted **Focal Loss** to:
+
+- Emphasize minority classes (e.g., COVID19, Tuberculosis)
+- Reduce overconfidence on frequent classes (e.g., Pneumonia)
+- Encourage learning from harder or misclassified examples
+
+The result? Significant performance improvement — especially in **recall for COVID-19 and Tuberculosis**.
+
+> 📌 *Focal Loss was essential to address this real-world class imbalance.*
+
+
 ## 🎯 Performance After Applying Focal Loss
 
 We re-trained the **Swin Transformer** using **Focal Loss** to address class imbalance and improve robustness. The results show notable improvements in precision, especially for minority classes like COVID19 and Tuberculosis.
