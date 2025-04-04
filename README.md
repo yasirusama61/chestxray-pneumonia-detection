@@ -690,4 +690,31 @@ We re-trained the **Swin Transformer** using **Focal Loss** to address class imb
 
 > 🧠 These results make the model more clinically viable, especially for rare or critical conditions.
 
+## 🛡️ Robustness Evaluation after Focal Loss
 
+To evaluate real-world reliability, we tested our model on noisy and perturbed versions of the test set. This simulates suboptimal imaging conditions often seen in clinical environments.
+
+| Condition        | Accuracy  | Result |
+|------------------|-----------|--------|
+| ✅ **Clean**         | **82.36%**  | ✅ Solid baseline performance
+| 🌫️ **Gaussian Noise** | 41.76%    | ⚠️ Significant drop
+| 🔆 **Overexposed**    | 82.62%    | ✅ Highly robust
+| 🌑 **Underexposed**   | 78.73%    | 🟡 Slight drop
+| 🌀 **Blurred**        | 45.01%    | ⚠️ Fragile under blur
+| 🧊 **Low-Resolution** | 45.14%    | ⚠️ Needs improvement
+
+---
+
+### 📉 Noise Sensitivity Chart
+
+<img src="assets/robustness_barplot.png" width="600"/>
+
+---
+
+### 🧠 Insights
+
+- Focal loss **improved clean test accuracy** to **82.36%**
+- Excellent robustness to **overexposed and underexposed** images
+- Weakness remains in handling **blur and resolution loss**, which is common in portable or low-end imaging setups
+
+> 💡 Consider fine-tuning on synthetic noise samples or using advanced augmentation (like CutMix, MixUp, or GAN-generated noisy images) to boost resilience.
