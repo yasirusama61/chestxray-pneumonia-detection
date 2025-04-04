@@ -616,6 +616,16 @@ To simulate real-world clinical environments, we tested the trained **Swin Trans
 
 We re-trained the **Swin Transformer** using **Focal Loss** to address class imbalance and improve robustness. The results show notable improvements in precision, especially for minority classes like COVID19 and Tuberculosis.
 
+### 📈 Training Progress
+
+<img src="assets/focal_loss_training_progress.png" width="600"/>
+
+- ⚙️ 10 Epochs
+- 📉 Loss: Focal Loss (γ=2.0)
+- 🧪 Validation Accuracy consistently > 97% after Epoch 3
+
+---
+
 ### 📋 Classification Report
 
 | Class            | Precision | Recall | F1-Score | Support |
