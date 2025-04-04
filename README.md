@@ -611,3 +611,40 @@ To simulate real-world clinical environments, we tested the trained **Swin Trans
 > 💬 _This analysis adds an extra layer of trust and practicality, especially for **deployment in resource-variable hospital settings**._
 
 ---
+
+## 🎯 Performance After Applying Focal Loss
+
+We re-trained the **Swin Transformer** using **Focal Loss** to address class imbalance and improve robustness. The results show notable improvements in precision, especially for minority classes like COVID19 and Tuberculosis.
+
+### 📋 Classification Report
+
+| Class            | Precision | Recall | F1-Score | Support |
+|------------------|-----------|--------|----------|---------|
+| **COVID19**      | 0.93      | 1.00   | 0.96     | 106     |
+| **NORMAL**       | 0.81      | 0.90   | 0.85     | 234     |
+| **PNEUMONIA**    | 0.94      | 0.85   | 0.89     | 390     |
+| **TUBERCULOSIS** | 1.00      | 0.98   | 0.99     | 41      |
+
+- **Overall Accuracy**: `0.89`
+- **Macro Average**: Precision = `0.92` | Recall = `0.93` | F1 = `0.92`
+- **Weighted Average**: Precision = `0.90` | Recall = `0.89` | F1 = `0.90`
+
+---
+
+### 🧾 Confusion Matrix
+
+<div align="center">
+  <img src="assets/cm_swin_after_fl.png" width="70%" alt="Model Accuracy under Noise Conditions">
+</div>
+---
+
+### 🔬 Insights
+
+- ✅ **COVID19 and Tuberculosis** cases were detected with near-perfect precision and recall.
+- 📉 **Pneumonia** recall slightly dropped (85%) but precision improved, reducing false positives.
+- 📈 **NORMAL** class performance improved with fewer cases misclassified as Pneumonia.
+- 💡 **Focal Loss** effectively focuses on hard-to-classify examples and improves minority class handling.
+
+> 🧠 These results make the model more clinically viable, especially for rare or critical conditions.
+
+
