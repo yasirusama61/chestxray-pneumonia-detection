@@ -718,3 +718,13 @@ To evaluate real-world reliability, we tested our model on noisy and perturbed v
 - Weakness remains in handling **blur and resolution loss**, which is common in portable or low-end imaging setups
 
 > 💡 Consider fine-tuning on synthetic noise samples or using advanced augmentation (like CutMix, MixUp, or GAN-generated noisy images) to boost resilience.
+
+## 🔬 Grad-CAM Visualization (After Focal Loss Training)
+
+Using the **Swin Transformer** trained with **Focal Loss**, we generated updated Grad-CAM overlays to visualize model focus:
+
+<img src="assets/focal_gradcam_grid.png" width="100%">
+
+- ✅ **Improved localization** for Pneumonia, COVID-19, and Tuberculosis.
+- 🎯 Model attention is more **concentrated and clinically relevant**, especially in posterior lung zones.
+- 🔍 Focal Loss helped in handling class imbalance, improving both interpretability and performance.
